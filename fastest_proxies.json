@@ -1,0 +1,246 @@
+[
+  {
+    "country": "Albania",
+    "ip": "103.167.234.26:443"
+  },
+  {
+    "country": "Armenia",
+    "ip": "139.45.214.126:443"
+  },
+  {
+    "country": "Australia",
+    "ip": "16.176.42.97:443"
+  },
+  {
+    "country": "Austria",
+    "ip": "151.236.8.190:443"
+  },
+  {
+    "country": "Bangladesh",
+    "ip": "103.48.16.37:443"
+  },
+  {
+    "country": "Belarus",
+    "ip": "144.31.129.7:443"
+  },
+  {
+    "country": "Belgium",
+    "ip": "35.210.99.51:443"
+  },
+  {
+    "country": "Bosnia and Herzegovina",
+    "ip": "185.99.2.175:443"
+  },
+  {
+    "country": "Brazil",
+    "ip": "38.180.79.9:443"
+  },
+  {
+    "country": "Bulgaria",
+    "ip": "185.232.170.226:443"
+  },
+  {
+    "country": "Canada",
+    "ip": "68.233.122.42:443"
+  },
+  {
+    "country": "Chile",
+    "ip": "186.67.70.55:443"
+  },
+  {
+    "country": "Colombia",
+    "ip": "157.137.229.226:443"
+  },
+  {
+    "country": "Cyprus",
+    "ip": "213.7.187.34:443"
+  },
+  {
+    "country": "Czech Republic",
+    "ip": "91.184.248.36:443"
+  },
+  {
+    "country": "Denmark",
+    "ip": "89.185.80.238:443"
+  },
+  {
+    "country": "Dominican Republic",
+    "ip": "181.36.229.212:443"
+  },
+  {
+    "country": "Egypt",
+    "ip": "38.54.59.70:443"
+  },
+  {
+    "country": "Estonia",
+    "ip": "138.124.4.38:443"
+  },
+  {
+    "country": "Finland",
+    "ip": "78.17.35.41:443"
+  },
+  {
+    "country": "France",
+    "ip": "88.96.47.56:443"
+  },
+  {
+    "country": "Germany",
+    "ip": "150.230.155.135:443"
+  },
+  {
+    "country": "Hong Kong",
+    "ip": "139.28.169.72:443"
+  },
+  {
+    "country": "Hungary",
+    "ip": "38.180.108.148:443"
+  },
+  {
+    "country": "Iceland",
+    "ip": "89.147.108.252:443"
+  },
+  {
+    "country": "India",
+    "ip": "5.253.30.226:443"
+  },
+  {
+    "country": "Ireland",
+    "ip": "54.77.206.41:443"
+  },
+  {
+    "country": "Israel",
+    "ip": "82.166.137.24:443"
+  },
+  {
+    "country": "Italy",
+    "ip": "195.231.38.220:443"
+  },
+  {
+    "country": "Japan",
+    "ip": "141.147.174.243:443"
+  },
+  {
+    "country": "Kazakhstan",
+    "ip": "213.148.10.155:443"
+  },
+  {
+    "country": "Kyrgyzstan",
+    "ip": "188.240.213.40:443"
+  },
+  {
+    "country": "Latvia",
+    "ip": "92.118.148.225:443"
+  },
+  {
+    "country": "Lithuania",
+    "ip": "45.93.137.149:443"
+  },
+  {
+    "country": "Malaysia",
+    "ip": "58.27.117.24:443"
+  },
+  {
+    "country": "Mauritius",
+    "ip": "41.76.42.116:443"
+  },
+  {
+    "country": "Mexico",
+    "ip": "148.223.138.11:443"
+  },
+  {
+    "country": "Moldova",
+    "ip": "5.181.158.96:443"
+  },
+  {
+    "country": "Netherlands",
+    "ip": "82.22.146.226:443"
+  },
+  {
+    "country": "Philippines",
+    "ip": "122.2.198.74:443"
+  },
+  {
+    "country": "Poland",
+    "ip": "176.124.33.59:443"
+  },
+  {
+    "country": "Romania",
+    "ip": "85.90.196.11:443"
+  },
+  {
+    "country": "Russia",
+    "ip": "194.87.71.141:443"
+  },
+  {
+    "country": "Saudi Arabia",
+    "ip": "158.101.242.224:443"
+  },
+  {
+    "country": "Serbia",
+    "ip": "38.180.100.80:443"
+  },
+  {
+    "country": "Singapore",
+    "ip": "43.133.61.219:443"
+  },
+  {
+    "country": "South Africa",
+    "ip": "84.8.137.211:443"
+  },
+  {
+    "country": "South Korea",
+    "ip": "152.70.254.197:443"
+  },
+  {
+    "country": "Spain",
+    "ip": "91.149.243.34:443"
+  },
+  {
+    "country": "Sweden",
+    "ip": "158.179.206.143:443"
+  },
+  {
+    "country": "Switzerland",
+    "ip": "185.195.69.19:443"
+  },
+  {
+    "country": "Syria",
+    "ip": "185.235.16.12:443"
+  },
+  {
+    "country": "Taiwan",
+    "ip": "60.249.21.30:443"
+  },
+  {
+    "country": "Thailand",
+    "ip": "43.133.110.81:443"
+  },
+  {
+    "country": "Turkey",
+    "ip": "94.131.108.136:443"
+  },
+  {
+    "country": "UAE",
+    "ip": "139.185.45.106:443"
+  },
+  {
+    "country": "Ukraine",
+    "ip": "31.41.221.121:443"
+  },
+  {
+    "country": "United Kingdom",
+    "ip": "78.129.253.158:443"
+  },
+  {
+    "country": "United States",
+    "ip": "159.60.146.82:443"
+  },
+  {
+    "country": "Uzbekistan",
+    "ip": "82.148.2.86:443"
+  },
+  {
+    "country": "Vietnam",
+    "ip": "103.6.234.246:443"
+  }
+]
