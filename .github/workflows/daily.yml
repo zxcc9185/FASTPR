@@ -1,0 +1,37 @@
+name: Daily Best Proxy Update
+
+on:
+  schedule:
+    # اجرا خودکار روزانه در ساعت 03:00 بامداد به وقت UTC
+    - cron: '0 3 * * *'
+  workflow_dispatch: # امکان اجرای دستی در هر لحظه با یک کلیک
+
+permissions:
+  contents: write
+
+jobs:
+  update-proxies:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run Proxy Checker
+        run: python main.py
+
+      - name: Commit and Push Updated JSON
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add fastest_proxies.json
+          if git diff --staged --quiet; then
+            echo "No updates to commit."
+          else
+            git commit -m "Auto: Update daily lowest-ping proxies per country [skip ci]"
+            git push
+          fi
