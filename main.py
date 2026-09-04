@@ -165,7 +165,7 @@ def fetch_proxies():
     return list(unique_candidates)
 
 def test_proxy(target, timeout=2.5):
-    """تست زنده هر پروکسی با سوکت TLS و محاسبه پینگ میلی‌ثانیه‌ای و استخراج لوکیشن"""
+    """تست اختصاصی برای اطمینان از عدم وقوع ارور SSL روی سایت‌های مستقل جهانی"""
     host, port = target.split(":")
     port = int(port)
     start_time = time.time()
@@ -175,41 +175,46 @@ def test_proxy(target, timeout=2.5):
         ctx.check_hostname = False
         ctx.verify_mode = ssl.CERT_NONE
         
-        # باز کردن ارتباط مستقیم سوکت
         sock = socket.create_connection((host, port), timeout=timeout)
-        with ctx.wrap_socket(sock, server_hostname="speed.cloudflare.com") as ssock:
+        
+        # تست با یک دامنه جهانی (خارج از کلادفلر) جهت تضمین رد شدن پکت‌های SSL
+        test_sni = "www.google.com"
+        with ctx.wrap_socket(sock, server_hostname=test_sni) as ssock:
+            # ارسال پکت اولیه TLS
             request = (
-                b"GET /cdn-cgi/trace HTTP/1.1\r\n"
-                b"Host: speed.cloudflare.com\r\n"
-                b"User-Agent: Mozilla/5.0\r\n"
-                b"Connection: close\r\n\r\n"
-            )
+                f"HEAD / HTTP/1.1\r\n"
+                f"Host: {test_sni}\r\n"
+                f"User-Agent: Mozilla/5.0\r\n"
+                f"Connection: close\r\n\r\n"
+            ).encode("utf-8")
             ssock.sendall(request)
             
-            buf = b""
-            while True:
-                chunk = ssock.recv(1024)
-                if not chunk: break
-                buf += chunk
-                if b"loc=" in buf and b"\r\n\r\n" in buf:
+            # اگر سرور ارور SSL ندهد و دیتایی برگرداند، یعنی پروکسی استاندارد SNI است
+            data = ssock.recv(512)
+            if not data:
+                return None
+                
+            latency = int((time.time() - start_time) * 1000)
+            
+        # حالا بررسی کشور از طریق کلادفلر برای تعیین لوکیشن
+        sock_loc = socket.create_connection((host, port), timeout=timeout)
+        with ctx.wrap_socket(sock_loc, server_hostname="speed.cloudflare.com") as ssock_loc:
+            ssock_loc.sendall(b"GET /cdn-cgi/trace HTTP/1.1\r\nHost: speed.cloudflare.com\r\nConnection: close\r\n\r\n")
+            loc_data = ssock_loc.recv(1024).decode("utf-8", errors="ignore")
+            
+            loc = None
+            for line in loc_data.splitlines():
+                if line.startswith("loc="):
+                    loc = line.split("=")[1].strip().upper()
                     break
                     
-            latency = int((time.time() - start_time) * 1000)
-            text = buf.decode("utf-8", errors="ignore")
-            
-            if "loc=" in text:
-                loc = None
-                for line in text.splitlines():
-                    if line.startswith("loc="):
-                        loc = line.split("=")[1].strip().upper()
-                        break
-                if loc:
-                    return {
-                        "ip": target,
-                        "loc": loc,
-                        "country": COUNTRY_MAP.get(loc, loc),
-                        "latency": latency
-                    }
+            if loc:
+                return {
+                    "ip": target,
+                    "loc": loc,
+                    "country": COUNTRY_MAP.get(loc, loc),
+                    "latency": latency
+                }
     except Exception:
         pass
     return None
